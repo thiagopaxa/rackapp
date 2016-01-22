@@ -1,7 +1,5 @@
-require 'bundler'
+require './lib/jonas'
 
-Bundler.setup(:default)
-require './app'
+use Rack::Reloader unless ENV['RACK_ENV'] == 'production'
 
-use Rack::Reloader
-run RackApp.new
+run Jonas.router
